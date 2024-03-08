@@ -1,17 +1,17 @@
 const express = require('express')
 const router = express.Router()
 // const mysql = require('mysql')
-const { Pool } = require('pg');
+// const { Pool } = require('pg');
 require('dotenv/config');
 
-const client = new Pool({
-  connectionString: process.env.POSTGRES_URL,
-});
-
-
-client.connect()
-  .then(() => console.log('Connected to PostgreSQL database'))
-  .catch(error => console.error('Error connecting to PostgreSQL database:', error));
+// const client = new Pool({
+//   connectionString: process.env.POSTGRES_URL,
+// });
+//
+//
+// client.connect()
+//   .then(() => console.log('Connected to PostgreSQL database'))
+//   .catch(error => console.error('Error connecting to PostgreSQL database:', error));
 
 
 // const db = mysql.createConnection({
