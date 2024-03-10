@@ -17,7 +17,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
-app.use('/', router)
+app.use('/api', router)
 
 const port = process.env.PORT || 4000
 app.listen(port, () => {

@@ -10,10 +10,10 @@ const Signin = () => {
   const [selectData, setSelectData] = useState([])
   const [selectValue, setSelectValue] = useState('')
 
-  let apiUrl = process.env.API_URL|| 'http://localhost:4000';
+  let apiUrl = process.env.API_URL|| 'http://localhost:4000/api';
 
   useEffect(() => {
-    let apiUrl = process.env.API_URL|| 'http://localhost:4000';
+    let apiUrl = process.env.API_URL|| 'http://localhost:4000/api';
 
     let processing = true 
     axiosFetchData(processing, apiUrl)
