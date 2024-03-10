@@ -10,10 +10,10 @@ const Signin = () => {
   const [selectData, setSelectData] = useState([])
   const [selectValue, setSelectValue] = useState('')
 
-  let apiUrl = process.env.API_URL|| 'http://localhost:4000/api';
+  let apiUrl = process.env.API_URL || 'http://localhost:4000/api';
 
   useEffect(() => {
-    let apiUrl = process.env.API_URL|| 'http://localhost:4000/api';
+    let apiUrl = process.env.API_URL || 'http://localhost:4000/api';
 
     let processing = true 
     axiosFetchData(processing, apiUrl)
@@ -37,8 +37,8 @@ const Signin = () => {
     return (
       <select value={selectValue} onChange={(e) => setSelectValue(e.target.value)}>
         {
-          selectData?.map((user) => (
-            <option value={user.email} key={user.email}> {user.email}</option>
+          selectData?.map((user, index) => (
+            <option value={user.email} key={index}> {user.email}</option>
           ))
         }
       </select>
@@ -53,12 +53,11 @@ const Signin = () => {
     }
 
     await axios.post(`${apiUrl}/sign-in`, postData)
-    .then(res => setError(<p className='succes'>{res.data}</p>))
+    .then(res => console.log(res.status,res.data))
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(selectValue)
     if(!email){
       setError(<p>'Need to introduce an email'</p>)
      }else{setError('')}
