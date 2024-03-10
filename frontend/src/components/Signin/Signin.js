@@ -10,18 +10,21 @@ const Signin = () => {
   const [selectData, setSelectData] = useState([])
   const [selectValue, setSelectValue] = useState('')
 
+  let apiUrl = process.env.API_URL|| 'http://localhost:4000';
 
-  useEffect(() => { 
+  useEffect(() => {
+    let apiUrl = process.env.API_URL|| 'http://localhost:4000';
+
     let processing = true 
-    axiosFetchData(processing)
+    axiosFetchData(processing, apiUrl)
     return() => {
       processing = false
     }
   }, [])
 
 
-  const axiosFetchData = async(processing) => {
-    await axios.get('http://localhost:4000/users')
+  const axiosFetchData = async(processing, apiUrl) => {
+    await axios.get(`${apiUrl}/users`)
     .then(res => {
       if(processing){
         setSelectData(res.data)
@@ -49,7 +52,7 @@ const Signin = () => {
       lastName: lastName
     }
 
-    await axios.post('http://localhost:4000/sign-in', postData)
+    await axios.post(`${apiUrl}/sign-in`, postData)
     .then(res => setError(<p className='succes'>{res.data}</p>))
   }
 
